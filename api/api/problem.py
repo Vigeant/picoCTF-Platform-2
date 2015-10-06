@@ -585,7 +585,7 @@ def get_all_problems(category=None, show_disabled=False):
     if not show_disabled:
         match.update({'disabled': False})
 
-    return list(db.problems.find(match, {"_id":0}).sort('score', pymongo.ASCENDING))
+    return list(db.problems.find(match, {"_id":0}).sort('name', pymongo.ASCENDING))
 
 @api.cache.memoize()
 def get_solved_pids(tid=None, uid=None, category=None):
