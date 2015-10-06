@@ -315,8 +315,7 @@ def create_user_request(params):
 
         team = api.team.get_team(name=params["team-name-existing"])
 
-        if team['password'] != params['team-password-existing']:
-            raise WebException("Your team passphrase is incorrect.")
+        raise WebException("Not allowed to join a team. Please create a new team using your name.")
 
     # Create new user
     uid = create_user(
