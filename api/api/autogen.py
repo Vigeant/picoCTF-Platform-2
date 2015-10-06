@@ -238,7 +238,7 @@ def get_instance_number(pid, tid):
     if total_instances == 0:
         raise InternalException("{} has no instances.".format(pid))
 
-    instance_number = random.randint(0, total_instances-1)
+    instance_number = int(tid) % get_number_of_instances(pid)
     random.setstate(previous_state)
 
     return instance_number
