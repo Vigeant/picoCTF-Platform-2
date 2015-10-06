@@ -72,7 +72,17 @@ def get_groups(tid=None, uid=None):
                        'owner': owner,
                        'score': api.stats.get_group_average_score(gid=group['gid'])})
     return groups
-
+    
+def getNextSequence(name):
+    db = api.common.get_conn()
+    ret = db.counters.find_and_modify(
+        query= { "_id": name },
+        update= { "$inc": { "seq": 1 } },
+        new=True,
+        upsert= True
+    )
+    return "%d" % int(ret.get('seq'))
+    
 def create_team(params):
     """
     Directly inserts team into the database. Assumes all fields have been validated.
@@ -91,7 +101,7 @@ def create_team(params):
     if not shell_accounts_available() and api.config.enable_shell:
         raise SevereInternalException("There are no shell accounts available.")
 
-    params['tid'] = api.common.token()
+    params['tid'] = getNextSequence("tid")
     params['size'] = 0
 
     db.teams.insert(params)
