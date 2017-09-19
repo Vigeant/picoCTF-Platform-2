@@ -24,10 +24,7 @@ teacherLoggedInNoCompetition =
 
 userLoggedIn =
   Problems: "/problems"
-  Shell: "/shell"
   Team: "/team"
-  Chat: "/chat"
-  Scoreboard: "/scoreboard"
   About:
     About: "/about"
     News: "/news"
@@ -37,7 +34,6 @@ userLoggedIn =
 
 userLoggedInNoCompetition =
   Team: "/team"
-  Chat: "/chat"
   Scoreboard: "/scoreboard"
   About:  
     About: "/about"
@@ -50,7 +46,6 @@ userLoggedInNoCompetition =
 userNotLoggedIn =
   About: "/about"
   News: "/news"
-  Scoreboard: "/scoreboard"
   Login: "/login"
 
 loadNavbar = (renderNavbarLinks, renderNestedNavbarLinks) ->
